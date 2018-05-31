@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\author{ZHANG Xiao Research Intern in IBM CRL}
+\title{Network 20q HW9}
+
+\begin{document}
+\maketitle
+\pagebreak
+
+\section{To cloud or not to cloud}
+\subsection{a}
+In this qustion, Bumbershoot Corporation needs to transfer 600GB data to Amazon EC2, and EC2 need to process this data.
+
+Since EC2 could process 1GB of data in 2 hours, the price for each GB processed by EC2 is 0.2\$, so the cost in EC2 would be:
+\begin{equation}
+C = C_{process} + C_{transfer} = 0.2 * 600 + 0.15 * 600 = 210 (\$)
+\end{equation}
+
+\subsection{b}
+The total time needs to transfer and process the data is:
+\begin{equation}
+T = T_{transfer} + T_{process} = \frac{600GB}{20Mbps} + 600 * 2 = \frac{600*1024}{\frac{20}{8}} = 68.27 + 1200
+\end{equation}
+
+Because in this question, the transfer could not be palatalized, but the CPU time 1200 hours could be palatalized. So the total time would be $68.27 + \frac{1200}{I_{EC2}} $, $I_{EC2}$ means the instances rented by Bumbershoot Corporation.
+
+\subsection{c}
+
+Since the computer would have the same processing speed with EC2, the total CPU time would also be 1200 hours. But in this company, 24 computer would process this data at the same time, $T = \frac{1200}{24} = 50 (hours)$, the cost would be $C = 15 * 24 = 360 \$$. So the cost would be much higher,but the processing  time would be just a bit better.
+
+\subsection{b}
+
+Since the data could be split, we could use multiply transmission sites to transmit the data in parallel. Or we could also mail the data to the data center of Amazon only by an 1TB removable disk, which could also save the transmitting cost at the same time.
+
+\section{Compression-reliability tradeoff}
+
+\subsection{a}
+Under the first condition, each frame is constructed with 5 I frames, 5 P frames and 5 B frames, so the total cost is $ 5 * (7 + 3 + 1) = 55 (kB) $, every GoP's cost is $ 7 + 3 + 1 = 11 (kB)$
+
+\subsection{b}
+Because the successfulness or transmission is independent, the probability that an entire GoP got successfully transmitted is $P = (1-1\%)^3 = 0.970299$. Because each frame consists of five GoPs,  the number of GoPs that successful on the first attempt at the transmission of the entire video is $5 * P = 0.970299 * 5 = 4.851495$, the expected number of retransmission at least once is $5 - 4.85149 = 0.148505$, the cost is $0.148505 * 11 = 1.633555 (kB)$.
+
+\subsection{c}
+Under the this condition, each frame is constructed with 3 I frames, 3 P frames and 9 B frames, so the total cost is $ 3 * (7 + 3 + 3*1) = 39 (kB) $, every GoP's cost is $ 7 + 3 + 3*1 = 13 (kB)$
+
+\subsection{d}
+Because the successfulness or transmission is independent, the probability that an entire GoP got successfully transmitted is $P = (1-1\%)^5 =0.9509900499$. Because each frame consists of three GoPs,  the number of GoPs that successful on the first attempt at the transmission of the entire video is $3 * P =0.9509900499* 3 = 2.8529701497$, the expected number of retransmission at least once is $3 -2.8529701497= 0.1470298503$, the cost is $0.1470298503 * 13 = 1.9113880539 (kB)$.
+
+\subsection{c}
+
+Although GoP in a compress less data than GoP in c, but GoP a suffer from less cost during retransmission.
+
+
+
+
+\end{document}

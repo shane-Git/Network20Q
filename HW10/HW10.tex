@@ -1,0 +1,42 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\author{ZHANG Xiao Research Intern in IBM CRL}
+\title{Network 20q HW10}
+
+\begin{document}
+\maketitle
+\pagebreak
+
+\section{Aloha}
+\subsection{a}
+The probability of a successful transformation is $ P_s = N*p*(1-p)^{N-1}$, only successful transmission could count throughput, so:
+\begin{equation}
+S = 1 * P_s = N*p*(1-p)^{N-1} (Mbps)
+\end{equation}
+
+\subsection{b}
+We need to calculate the differentiate of $S(p)$:
+\begin{equation}
+S(p)' = (N*p*(1-p)^{N-1})' = N*(1-p)^{N-1} - N*(1-p)^{N-1} = (1-N)*N*(1-p)^{N-2}
+\end{equation}
+
+Set the equation to 0, we could get $p^* = \frac{1}{N}$
+
+\subsection{c}
+The maximum throughput is $ S = N*\frac{1}{N}*(1-\frac{1}{N})^{N-1}  = (1-\frac{1}{N})^{N-1}$, so $\lim_{N\to\infty}(1-\frac{1}{N})^{N-1}$ let $u=N-1$, we could get $\lim_{N\to\infty}(1-\frac{1}{N})^{N-1} = \lim_{u\to\infty}(1-\frac{1}{u+1})^{u}  = \lim_{u\to\infty}(\frac{u}{u+1})^{u} = \lim_{u\to\infty}(\frac{1}{\frac{u+1}{u}})^{u} = \lim_{u\to\infty}(\frac{1}{1+\frac{1}{u}})^{u} = \frac{1}{e} (Mbps)$
+
+\section{Overhead}
+
+If we are going to seed 250 bytes data, the payload percentage is:
+
+\begin{equation}
+\frac{250}{8+6+6+2+40+20+4+12+250 } = 0.718390804= 71.8\%
+\end{equation}
+
+
+
+
+\end{document}
